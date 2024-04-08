@@ -1,0 +1,419 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+
+
+<style type="text/css">
+
+	.bar {
+		background-color: black;
+		width: 100%;
+		padding: 20px 0px 0px 0px;
+		font-size: 6vw;
+		text-align: center;
+		font-family: 'Russo One';
+		color: white;
+		-webkit-text-stroke: 3px purple;
+		font-style: normal;
+		font-weight: normal;
+	}
+
+	.bottomBorder {
+		background-image: linear-gradient(black, Midnightblue);
+		height: 20px;
+		width: 100%;
+	}
+
+	@media only screen and (max-device-width: 480px){
+		    .bar iframe {
+		    	border: 0px;
+				vertical-align: middle;
+				min-width: 150px;
+			  	max-width: 150px;
+			  	min-height: 150px;
+			  	max-height: 150px;
+			}
+
+	}
+	
+	@media screen and  (min-device-width: 480px){
+		.bar iframe {
+			border: 0px;
+			vertical-align: middle;
+			min-width: 300px;
+		  	max-width: 300px;
+		  	min-height: 300px;
+		  	max-height: 300px;
+		}
+	}
+
+
+	.parent {
+	  position: relative;
+	  top: 0;
+	  left: 0;
+	  text-align: center;
+  	  color: white;
+  	  font-family: 'Russo One';
+  	  -webkit-text-stroke: 3px purple;
+	}
+	.background1 {
+	   	position: relative;
+	 	top: 0;
+	 	left: 0;
+	  	width: 100%;
+	  	margin: 0px;
+	}
+	.background2{
+		position: relative;
+	   	top: 0px;
+	   	left: 0;
+	   	width: 100%;
+	   	margin: 0px;
+	}
+	.background3{
+		position: relative;
+	   	top: 0px;
+	   	left: 0;
+	   	width: 100%;
+	   	margin: 0px;
+	}
+	.click{
+		position:absolute;
+		top:-1%;
+		left: 43%;
+		width:10%;
+		margin: 0px;
+	}
+
+	.title0{
+		position: absolute;
+	  	top: 0%;
+	  	left: 3%;
+	  	font-size: 2vw;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 1px darkgoldenrod;
+	}
+	.title1{
+		position: absolute;
+	  	top: 2%;
+	  	left: 3%;
+	  	font-size: 3vw;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 1px darkgoldenrod;
+
+	}
+	.step {
+	  	position: absolute;
+	  	top: 4%;
+	  	left: 3%;
+	  	width:100;
+	  	min-width: 30%;
+	  	max-width: 30%;
+	}
+	.attrac {
+	  	position: absolute;
+	  	top: 4%;
+	  	left: 34%;
+	  	width:100;
+	  	min-width: 30%;
+	  	max-width: 30%;
+	}
+
+	.beesncubes {
+	  	position: absolute;
+	  	top: 4%;
+	  	left: 67%;
+	  	width: 150px;
+	  	min-width: 30%;
+	  	max-width: 30%;
+	}
+
+
+	.title2 {
+		position: absolute;
+	  	top: 18%;
+	  	left: 15%;
+	  	font-size: 3vw;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 1px darkgoldenrod;
+	}
+
+
+	.blob {
+	  	position: absolute;
+	  	top: 20%;
+	  	left: 5%;
+	  	width:100px;
+	  	min-width: 27%;
+	  	max-width: 27%;
+	}
+	.linkedarm {
+	  	position: absolute;
+	  	top: 20%;
+	  	left: 70%;
+	  	width: 100px;
+	  	min-width: 27%;
+	  	max-width: 27%;
+	}
+	.pendulum {
+	  	position: absolute;
+	  	top: 19.7%;
+	  	left: 36%;
+	  	width: 80px;
+	  	min-width: 30%;
+	  	max-width: 30%;
+	}
+
+	.title3 {
+		position: absolute;
+	  	top: 33%;
+	  	left: 14%;
+	  	font-size: 3vw;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 1px darkgoldenrod;
+	}
+	.fourier {
+	  	position: absolute;
+	  	top: 35%;
+	  	left: 55%;
+	  	width: 400px;
+	  	min-width: 40%;
+	  	max-width: 40%;
+	}
+
+
+	.perlinmap {
+	  	position: absolute;
+	  	top: 35%;
+	  	left: 6%;
+	  	width: 100px;
+	  	min-width: 45%;
+	  	max-width: 45%;
+	}
+
+	.title4 {
+		position: absolute;
+	  	top: 48%;
+	  	left: 4%;
+	  	font-size: 2.5vw;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 1px darkgoldenrod;
+	}
+	.rings {
+	  	position: absolute;
+	  	top: 50%;
+	  	left: 70%;
+	    width:100px;
+	    min-width: 25%;
+	    max-width: 25%;
+	}
+	.pigeo {
+	  	position: absolute;
+	  	top: 50%;
+	  	left: 37%;
+	    width: 100px;
+	    min-width: 30%;
+	    max-width: 30%;
+	}
+	.pirandom {
+	 	position: absolute;
+	  	top: 50%;
+	  	left: 5%;
+	    width: 100px;
+	    min-width: 25%;
+	    max-width: 25%;
+	}
+
+	.title5 {
+		position: absolute;
+	  	top: 64%;
+	  	left: 32%;
+	  	font-size: 3vw;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 1px darkgoldenrod;
+	}
+	.picollision {
+	  	position: absolute;
+	  	top: 66%;
+	  	left: 20%;
+	    width:1000;
+	    min-width: 60%;
+	    max-width: 60%;
+	}
+
+	.title6 {
+		position: absolute;
+	  	top: 76%;
+	  	left: 8%;
+	  	font-size: 3vw;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 1px darkgoldenrod;
+	}
+
+	.randomwalk {
+	  	position: absolute;
+	  	top: 78%;
+	  	left: 5%;
+	    width:1000px;
+	    min-width: 30%;
+	    max-width: 30%;
+
+	}
+	.raycast {
+		position: absolute;
+	  	top: 78%;
+	  	left: 68%;
+	    width: 1400px;
+	    min-width: 30%;
+	    max-width: 30%;
+
+	}
+	.visualliser {
+		position: absolute;
+		top: 78%;
+	 	left: 37%;
+	  	width: 100px;
+	  	min-width: 30%;
+	 	max-width: 30%;
+	}
+	.link{
+		position: absolute;
+		top: 90%;
+	 	left: 70%;
+	 	font-size: 3vw;
+	  	color: white;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 2px pink;
+	  	min-width: 30%;
+	 	max-width: 30%;
+	}
+
+	.link img{
+		top: 92%;
+	 	left: 70%;
+	 	min-width: 50%;
+	 	max-width: 50%;
+	}
+
+	.credits{
+		position: absolute;
+		top: 95%;
+	 	left: 10%;
+	 	font-size: 7vw;
+	  	color: white;
+	  	font-family: 'Russo One';
+	  	-webkit-text-stroke: 2px pink;
+	  	padding: 0px;
+	}
+
+	body {
+		margin: 0px;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+
+</style>
+</head>
+<body>
+	<div class="bar">
+		<span> Project </span>
+				<iframe src="piano"></iframe>
+		<span> Catalogue </span>
+	</div>
+	<div class="bottomBorder">
+	</div>
+	<div class="parent">
+		<img class="background1" src="wave.jpg" />
+
+		<img class="background2" src="gloss.jpg" />
+
+		<img class="background3" src="house.jpg" />
+
+		<img class="click" src="click.png" />
+
+		<pre class="title0">Hover to view projects</pre>
+		<pre class="title1">10 Step Generator     Attractor repulsor          Bees n Cubes</pre>
+
+		<video class="step" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/10step.webm" type="video/webm"></source>	
+		</video> 
+		
+		<video class="attrac" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/attractorrepulsor.webm" type="video/webm"></source>
+		</video> 
+
+		<video class="beesncubes" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/beesncubes.webm" type="video/webm"></source>
+		</video>
+		<div class = "trigger2"></div>
+
+	
+		<pre class="title2">Blob                 Double Pendulum          Jointed Arm</pre>
+
+		<video class="blob" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/blob.webm" type="video/webm"></source>
+		</video>
+
+		<video class="linkedarm" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/linkedarm.webm" type="video/webm"></source>
+		</video>
+
+		<video class="pendulum" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/pendulum.webm" type="video/webm"></source>
+		</video>
+			
+
+		<pre class="title3">Perlin Noise Graph                         Fourier Series</pre>
+
+		<video class="fourier" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/fourier.webm" type="video/webm"></source>
+		</video>
+
+		<video class="perlinmap" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/perlinmap.webm" type="video/webm"></source>
+		</video>
+
+		<pre class="title4">Random π Calculator       Geometric π Calculator         Ring Generator</pre>
+
+		<video class="pigeo" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/pigeo.webm" type="video/webm"></source>
+		</video>
+
+		<video class="pirandom" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/pirandom.webm" type="video/webm"></source>
+		</video>
+
+		<video class="rings" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/rings.webm" type="video/webm"></source>
+		</video>
+
+		<pre class="title5">Collision π Calculator</pre>
+
+		<video class="picollision" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/picollision.webm" type="video/webm"></source>
+		</video>
+
+		<pre class="title6">3D RandomWalk      Audio Visualliser             Raycast</pre>
+
+		<video class="randomwalk" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/randomwalk.webm" type="video/webm"></source>
+		</video>
+
+		<video class="raycast" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/raycast.webm" type="video/webm"></source>
+		</video>
+
+		<video class="visualliser" onmouseover="this.play()"this.currentTime=0 loop=true>
+			<source src="webm/audiovisualliser.webm" type="video/webm"></source>
+		</video>
+		<a class = "link" href="https://editor.p5js.org/leongzhaochuen/collections/FDo_OimiC"> <p> Made with </p>
+		<img src="p5js.png"> </a>
+		<pre class="credits"> by Leong Zhao Chuen </pre>
+	</div>
+</body>

@@ -1,0 +1,520 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+	<script src="p5/c2.js"></script>
+	<script		  src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+	<script src="jquery.onepage-scroll.min.js"></script>
+	<link rel="stylesheet" href="onepage-scroll.css"/>
+	<script type="application/javascript" src="p5/myWebsite.js"></script>
+
+	<style>
+		@font-face {
+			font-family: building;
+			src: url("p5/Building_Typeface.ttf");
+		}
+		body {
+			background-color: black;
+		}
+		canvas {
+			display: block;
+			margin: auto;
+			position: center;
+		}
+		p{
+			font-family: building;
+			font-size: 40px;
+			padding:0;
+		}
+		.imgc{
+			width: 50%;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+
+		}
+
+		.page1Words{
+			color:white;
+			font-size:50px;
+		}
+		.btn{
+			font-family: sans-serif;
+			font-weight: bold;
+			font-size: 25px;
+			color: azure;
+			background-color: grey;
+			padding: 5px;
+			width:180px;
+			border: 2px solid darkgrey;
+			box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+			border-radius: 50px;
+			transition : 1000ms;
+			transform: translateY(0);
+			text-align: center;
+		}
+
+		.btn:hover{
+			transition : 1000ms;
+			width: 220px;
+			background-color: azure;
+			color: grey;
+			border: solid 2px lightgrey;
+		}
+
+		.center {
+			display: flex;
+			justify-content: center;
+		}
+
+		.trueCenter{
+			display: block;
+			position: absolute;
+			text-align: center;
+			position: center;
+			width:99%;
+			padding-top: 300px;
+			font-size:60px;
+		}
+		.page1{
+			background-color: black;
+			margin-top:0px;
+			padding-top: 0px;
+		}
+		.page3{
+			background-color: beige;
+			margin-top:0px;
+			padding-top: 0px;
+		}
+		.page4{
+			background-color: seashell;
+			margin-top:0px;
+			padding-top: 0px;
+		}
+		.projects{
+			font-family: building;
+			font-size:50px;
+			color:black;
+			text-shadow: 2px grey;
+			display: flex;
+			justify-content: center;
+			margin-top: -50px;
+			margin-bottom:-50px;
+
+		}
+
+		.vids{
+			transition:1000ms;
+			position: relative;
+			width:200px;
+			display: block;
+			justify-content: center;
+			padding:30px;
+			padding-bottom:0px;
+		}
+		.vids video {
+			transition:1000ms;
+			margin: 0px;
+			width:200px;
+		}
+		.vids p{
+			transition:1000ms;
+			margin-top: 10px;
+			width:auto;
+			text-align:center;
+		}
+
+		.vids:hover{
+			transition:1000ms;
+			margin-bottom: -20px
+		}
+		.vids:hover video{
+			transition:1000ms;
+			width: 250px;
+			box-shadow: 10px grey;
+			margin-left: -10px;
+			margin-right: -10px;
+			margin-bottom:-10px;
+			box-shadow: 0px 10px 5px 0px #888888;
+		}
+		.vids:hover p{
+			transition:1000ms;
+			margin-top:10px;
+		}
+
+		.page2{
+			background-color:grey;
+		}
+		.page5{
+			background-color:azure;
+		}
+		.page6{
+			background-color:salmon;
+		}
+		.righttop{
+			position: absolute;
+			top: 10px;
+			right: 100px;
+
+		}
+
+		.box1 {
+			border: 1px solid #ccc;
+			padding: 5px;
+			text-align: center;
+			width: 1200px;
+			margin: 0 auto;
+			transform
+		}
+
+		.box2 {
+			border: 1px solid #ccc;
+			padding: 20px;
+			text-align: center;
+			width: 1000px;
+			margin: 0 auto;
+			transform
+		}
+
+		/* Style for images */
+
+		.box1 img {
+			max-width: 20%;
+			height: auto;
+		}
+
+		.box2 img {
+			max-width: 30%;
+			height: auto;
+		}
+
+		/* Style for text */
+		.box1 p {
+			font-size: 30px;
+			margin: 10px 20;
+			color: lightgray;
+		}
+		.titles {
+			writing-mode: vertical-rl; /* Rotate the text 90 degrees */
+			text-orientation: mixed;
+			white-space: nowrap;
+			transform: rotate(180deg); /* Fix for browser compatibility */
+			position: absolute;
+			left: 0;
+			top: 0;
+			width:50;
+			font-family: building;
+			font-size:50px;
+			color: black;
+			text-shadow: 2px grey;
+			padding:20px;
+		}
+
+		.grid {
+			width:70%;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			justify-items: center;
+			margin-top: 50px;
+
+		}
+		.item {
+			text-align: center;
+		}
+		.item p{
+			margin-top:5px;
+			margin-bottom:5px;
+		}
+
+		.grid img {
+			max-width: 70%;
+		}
+
+	</style>
+
+</head>
+
+<body>
+	<div class="main">
+		<section class= "page1">
+			<div class= "animate__animated  animate__fadeInDown animate__delay-5s">********************************************************************
+					<a href="mailto:leongzhaochuen@gmail.com">
+						<img src="gmail.webp" alt="Click here send to my email" style="width:50px; padding: 20px" z-index= "999">
+					</a>
+
+					<a href="https://www.linkedin.com/in/zhao-chuen-leong-5422581b2/">
+						<img src="linkin.png" alt="Click here to find my Linkedin" style="width:50px; padding: 20px" z-index= "999">
+					</a>
+			</div>
+
+			<div class=page1Words>
+				<div class ="trueCenter">
+					<div class ="animate__animated animate__fadeOut animate__delay-2s">
+						<h1 class= "animate__animated  animate__fadeIn"> Mechanical Engineering </h1>
+					</div>
+				</div>
+
+				<div class ="trueCenter">
+					<div class ="animate__animated animate__fadeOut animate__delay-4s">
+						<h1 class= "animate__animated  animate__fadeIn animate__delay-2s"> Programming </h1>
+					</div>
+				</div>
+
+				<div class ="trueCenter">
+					<div class ="animate__animated animate__fadeOut animate__delay-5s">
+						<h1 class= "animate__animated  animate__fadeIn animate__delay-4s"> Theatre </h1>
+					</div>
+				</div>
+
+				<div class ="trueCenter" style="padding-top:0px" >
+					<div class= "animate__animated animate__fadeInDown animate__delay-5s">
+						<h1> Zhao Chuen Leong </h1>	
+						<img class = "imgc" src="adams family.jpg"><img>				
+					</div>
+				</div>
+			</div>
+		</section>
+
+		################################################################################################################
+
+		<section class="page2">
+			<div class="titles">
+				<h1>Engineering Projects</h1>
+			</div>
+			<div class="box1">
+				<p style="font-weight:2px; font-size:40px;">Eurobots 2020</p>
+				<img src="euro1.png"><img>
+				<img src="euro2.png"><img>
+				<img src="euro3.jpg"><img>
+				<p>My team won best video in the robotics competition Eurobots, I was in charge of implementing openAI for image recognition and also design</p>
+			</div>
+
+			<div class="box1">
+				<p style="font-weight:2px; font-size:40px;">Biomemetic Kneejoint</p>
+				<img src="knee2.png"><img>
+				<img src="knee1.jpg"><img>
+				<img src="knee4.png"><img>
+				<p>My team created a biomemetic knee joint that can recreate realistic knee conditions for knee cartilage lab testing</p>
+			</div>
+
+		</section>
+
+		#################################################################################################################
+
+		<section class="page5">
+			<div class="titles">
+				<h1>Engineering Projects</h1>
+			</div>
+			<p style="font-weight:2px; font-size:40px;text-align: center;">Microswimmer optimization</p>
+			<div class="box2" style="image: 400px">
+				<img src="ip1.png"><img>
+				<img src="ip2.png"><img>
+				<img src="ip3.png"><img>
+				<img src="ip4.png"><img>
+				<img src="ip5.png"><img>
+				<img src="ip6.png"><img>
+				<p style="color: black;">Using current analytical methods and formulas, I created a methodoligical fomula for self-diffisiophoresis microswimmers, simulated it and imported data into Python for further calculation and processing. This allowed for more complicated microswimmer designs to be explored outside of conventional designs restricted by analytical formulas</p>
+			</div>
+
+		</section>
+
+		######################################################################################################
+		<section class="page6">
+			<div class="titles">
+				<h1>Engineering Projects</h1>
+			</div>
+			<p style="font-weight:2px; font-size:40px;text-align: center;">Student Formula</p>
+			<div class="box2" style="image: 400px">
+				<img src="f1.jpg"><img>
+				<img src="f1.webp"><img>
+				<img src="f12.png"><img>
+				<img src="f13.png"><img>
+				
+				<p style="font-color: black;">I was in the camshaft department working on a new variable valve transmittion(VVT) driveshaft, we performed prototyping, simulations and wind tunnel testing on the race car</p>
+			</div>
+
+			
+
+		</section>
+
+
+
+
+		######################################################################################################################
+		<section class="page3">
+			<div class ="titles" >
+				<h1> Programming Projects </h1>
+				<p> Made using  <a href ="https://editor.p5js.org/leongzhaochuen/sketches">p5</a> p5 in Js, hover over for the project in motion! </p>
+			</div>
+			<div class="center">
+				<div class ="vids">
+					<video onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/10step.webm" type="video/webm"></source>	
+					</video>
+					<p> 10 Step </p>
+				</div>
+				<div class ="vids">
+					<video class="attrac" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/attractorrepulsor.webm" type="video/webm"></source>
+					</video>
+					<p> Attractor </p> 
+				</div>
+				<div class ="vids">
+					<video class="beesncubes" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/beesncubes.webm" type="video/webm"></source>
+					</video>
+					<p> Bees n Cubes </p>
+				</div>
+				<div class ="vids">
+					<video class="blob" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/blob.webm" type="video/webm"></source>
+					</video>
+					<p> Blob </p>
+				</div>
+				<div class ="vids">
+					<video class="linkedarm" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/linkedarm.webm" type="video/webm"></source>
+					</video>
+					<p> Linked Arm </p>
+				</div>
+			</div>
+
+			<div class="center">
+				<div class ="vids">
+					<video class="pendulum" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/pendulum.webm" type="video/webm"></source>
+					</video>
+					<p> Pendulum </p>
+				</div>
+				<div class ="vids">
+					<video class="fourier" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/fourier.webm" type="video/webm"></source>
+					</video>
+					<p> Fourier </p>
+				</div>
+				<div class ="vids">
+					<video class="perlinmap" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/perlinmap.webm" type="video/webm"></source>
+					</video>
+					<p> Perlin Map </p>
+				</div>
+				<div class ="vids">
+					<video class="pigeo" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/pigeo.webm" type="video/webm"></source>
+					</video>
+					<p> Pi Geometry </p>
+				</div>
+				<div class ="vids">
+					<video class="pirandom" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/pirandom.webm" type="video/webm"></source>
+					</video>
+					<p> Pi Random </p>
+				</div>
+			</div>
+
+			<div class="center">
+				<div class ="vids">
+					<video class="rings" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/rings.webm" type="video/webm"></source>
+					</video>
+					<p> Rings </p>
+				</div>
+				<div class ="vids">
+					<video class="picollision" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/picollision.webm" type="video/webm"></source>
+					</video>
+					<p> Pi Collision </p>
+				</div>
+				<div class ="vids">
+					<video class="randomwalk" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/randomwalk.webm" type="video/webm"></source>
+					</video>
+					<p> 3D Random Walk </p>
+				</div>
+				<div class ="vids">
+					<video class="pigeo" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/pigeo.webm" type="video/webm"></source>
+					</video>
+					<p> Pi Geometry </p>
+				</div>
+				<div class ="vids">
+					<video class="raycast" onmouseover="this.play()"this.currentTime=0 loop=true onmouseout="this.pause()">
+						<source src="webm/raycast.webm" type="video/webm"></source>
+					</video>
+					<p> Raycast </p>
+				</div>
+			</div>
+		</section>
+
+		#######################################################################################################################
+
+		<section class="page4">
+			<div class ="titles" >
+				<h1> Theatre Projects  (Roughly 40) </h1> <a href="https://stagesoc.org.uk/forum/memberlist.php?mode=viewprofile&u=633>" <h1> click here to view my theatre profile </h> </a>
+				</div>
+				<div class="center">
+					<div class="grid">
+						<div class="item">
+							<img src="adams family.jpg">
+							<p>Adams family</p>
+						</div>
+						<div class="item">
+							<img src="attwn.jpg">
+							<p>And then there were none</p>
+						</div>
+						<div class="item">
+							<img src="barnaby.jpg">
+							<p>But why bump off barnaby</p>
+						</div>
+						<div class="item">
+							<img src="little womenjpg.jpg">
+							<p>Little women</p>
+						</div>
+						<div class="item">
+							<img src="mama mia.jpg">
+							<p>Mamma Mia</p>
+						</div>
+						<div class="item">
+							<img src="medics.jpg">
+							<p>Medics Revue 2022</p>
+						</div>
+						<div class="item">
+							<img src="panto.jpg">
+							<p>Panto 2022</p>
+						</div>
+						<div class="item">
+							<img src="title.jpg">
+							<p>Pure Dance 2021</p>
+						</div>
+					</div>
+				</section>	<!-- Add more items as needed -->
+
+
+				################################################################################################
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(".main").onepage_scroll({
+   sectionContainer: "section",     // sectionContainer accepts any kind of selector in case you don't want to use section
+   easing: "ease",                  // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
+                                    // "ease-out", "ease-in-out", or even cubic bezier value such as "cubic-bezier(0.175, 0.885, 0.420, 1.310)"
+   animationTime: 1000,             // AnimationTime let you define how long each section takes to animate
+   pagination: true,                // You can either show or hide the pagination. Toggle true for show, false for hide.
+   updateURL: false,                // Toggle this true if you want the URL to be updated automatically when the user scroll to each page.
+   beforeMove: function(index) {},  // This option accepts a callback function. The function will be called before the page moves.
+   afterMove: function(index) {},   // This option accepts a callback function. The function will be called after the page moves.
+   loop: false,                     // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
+   keyboard: true,                  // You can activate the keyboard controls
+   responsiveFallback: false,        // You can fallback to normal page scroll by defining the width of the browser in which
+                                    // you want the responsive fallback to be triggered. For example, set this to 600 and whenever
+                                    // the browser's width is less than 600, the fallback will kick in.
+   direction: "vertical"            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
+});
+</script>
+</html>
+
