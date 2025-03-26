@@ -205,8 +205,8 @@
                 const movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
                 const movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
                 
-                cameraRotation.y -= movementX * 0.002;
-                cameraRotation.x -= movementY * 0.002;
+                cameraRotation.y -= movementX * 0.004;
+                cameraRotation.x -= movementY * 0.004;
                 
                 cameraRotation.x = Math.max(
                     -Math.PI / 2 + 0.01, 
