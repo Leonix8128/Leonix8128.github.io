@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+    <title>Zhao Test Website</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .prevent-select {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
+    }
+
+    body {
+        font-family: "Saira", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 100;
+        font-style: normal;
+        background: linear-gradient(#3e5151 30%, #decba4 45%, #202020 60%);
+        color: #fff;
+        overflow-x: hidden;
+        transition: background 1s ease;
+        -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+      height: 100vh;
+      position: fixed;
+      width: 100%;
+  }
+
+
+a:link
+{
+   color: #fb3f00;
+   text-decoration: none;
+}
+a:visited
+{
+   color: #fb3f00;
+   text-decoration: none;
+}
+a:hover
+{
+   color: #fb3f00;
+   text-decoration: none;
+}
+a:active
+{
+   color: #fb3f00;
+   text-decoration: none;
+}
+
+  /* Loading Screen */
+  .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOutLoading 0.5s ease-out 5s forwards;
+}
+
+
+@keyframes fadeOutLoading {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-logo {
+    font-size: 5rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    transform: translateY(-200vh);
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+}
+
+.loading-logo:nth-child(1) {
+  animation: glow 2s, slideInOut 1.5s ease-in-out forwards;
+  animation-delay: 0s;
+}
+
+.loading-logo:nth-child(2) {
+  animation: glow 2s, slideInOut 1.5s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+.loading-logo:nth-child(3) {
+  animation: glow 2s, slideInOut 1s ease-in-out forwards;
+  animation-delay: 3s;
+}
+
+.loading-logo:nth-child(4) {
+  animation: glow 2s, slideInOut 1s ease-in-out forwards;
+  animation-delay: 4s;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(102,126,234,0.5);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(102,126,234,0.8);
+    }
+}
+
+@keyframes slideInOut {
+  0% {
+    transform: translateY(-200vh);
+    opacity: 0;
+}
+10% {
+    transform: translateY(0);
+    opacity: 1;
+}
+90% {
+    transform: translateY(0);
+    opacity: 1;
+}
+100% {
+    transform: translateY(200vh);
+    opacity: 0;
+}
+}
+/* Screen Border */
+.screen-border {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 5px solid #8B7355;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+.screen-border::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 2px solid #B8860B;
+}
+
+/* Decorative Circle Top Left */
+.decorative-circle {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    width: 100px;
+    height: 100px;
+    z-index: 9998;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+}
+
+.decorative-circle:hover{
+    transform:scale(1.2);
+}
+
+.circle-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.circle-inner img{
+    width: 95%;
+    height: 90%;
+    position: center;
+
+}
+
+.circle-rotating {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #B8860B;
+    border-right-color: #B8860B;
+    animation: rotate 3s linear infinite;
+}
+
+.circle-rotating::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-bottom-color: #8B7355;
+    border-left-color: #8B7355;
+    animation: rotate 2s linear infinite reverse;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.menu-button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.5);
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.menu-button span {
+    width: 30px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-button.active span:nth-child(1) {
+    transform: rotate(40deg) translate(4px, 7px);
+}
+
+.menu-button.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-button.active span:nth-child(3) {
+    transform: rotate(-40deg) translate(4px, -7px);
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(20px);
+    border-left:5px double #B8860B;
+    z-index: 9998;
+    transition: right 0.4s;
+    padding: 2rem 2rem 2rem;
+    overflow-y: auto;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 8000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.menu-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.menu-item a:hover {
+    color: #667eea;
+    padding-left: 1rem;
+}
+
+.menu-section {
+    margin-top: 0rem;
+}
+
+.menu-section-title {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.logo {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    animation: fadeIn 1s ease-in;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: bold;
+    padding-top:1rem;
+    margin: 2rem 2rem;
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+    animation: slideUp 1s ease-out;
+    justify-self: center;
+}
+
+.title2 {
+    font-size: 6rem;
+    padding-top:1rem;
+    margin: 2rem 2rem;
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+    animation: slideUp 1s ease-out;
+    justify-self: center;
+}
+
+
+.description {
+    max-width: 800px;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    opacity: 0.9;
+    animation: fadeIn 2s ease-in;
+}
+
+
+.section {
+    padding: 4rem 2rem;
+    max-width: 2000px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 40%;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.spacer {
+    position:relative;
+    width: 600px;
+    height: 400px;
+    color:rgba(0,0,0,1);
+}
+
+
+/*Background Font*/
+.HeroFont {
+    position: absolute;
+    letter-spacing: 2.5rem;
+    justify-self: start;
+    top: 0%;
+    left: 8%;
+    font-size: 12rem;
+    font-family: "Bungee Hairline", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color:  rgb(230, 230, 230 , 0.6);
+}
+
+.BGFont {
+    position: relative;
+    letter-spacing: 1.2rem;
+    justify-self: start;
+    top: 135%;
+    left: 7%;
+    font-size: 7rem;
+    font-family: "Bungee Hairline", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color:  rgb(230, 230, 230 , 0.9);
+    padding:50px;
+}
+
+.BGFont2 {
+    position: relative;
+    letter-spacing: 1.2rem;
+    justify-self: start;
+    top: 135%;
+    left: 7%;
+    font-size: 7rem;
+    font-family: "Bungee Hairline", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color:  rgb(230, 230, 230 , 0.9);
+    padding:20px;
+}
+
+.BGImageContainer {
+    position: relative;
+    width: 100%;
+    height:30%;
+    display: inline-flex;
+    justify-items: center;
+}
+
+.BGImage {
+  max-width:50%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin-right: 10%;
+  margin-left: 10%;
+  bottom:0;
+}
+
+.BGImage img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+/* Grid container */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 2400px;
+  margin: 0 auto;
+  text-align:center;
+  justify-items:center;
+}
+
+.image-grid2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 2400px;
+  margin: 0 auto;
+  text-align:center;
+  justify-items:center;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 5px solid #8B7355;
+    pointer-events: none;
+    background-color:white;
+    }
+
+.image-grid2::before {
+    background-color:white;
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    right: 3px;
+    bottom: 3px;
+    border: 1px solid #B8860B;
+}
+
+
+
+/* Individual grid item */
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Image styling */
+.grid-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-grid li {
+    position: relative;
+    letter-spacing: 0.5rem;
+    font-size: 2rem;
+    font-family: "Bungee Hairline", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color:  rgb(230, 230, 230 , 1);
+    padding:10px;
+}
+
+/* Text overlay */
+.grid-item .text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/*ANIME JS STUFF*/
+
+.horizontal-bar {
+    padding: 1rem 0rem;
+    margin: 0 auto;
+    max-width: 90%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+}
+.square {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(to top, #ff0000 0%, #ff00ff 100%);
+    margin: 1px
+}
+
+
+.logo-item {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-left:10px;
+    margin-right: 10px;
+}
+
+.logo-item img{
+    max-width: 30%;
+    object-fit: cover;
+}
+
+/*Contact Page*/
+ .contactContainer {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+
+.contact-item {
+    display: inline-flex;
+    gap: 30px;
+    margin-bottom:40px;
+    background: #3b3b3b;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.contact-item img{
+    width: 240px;
+    height: 240px;
+    flex-shrink: 0;
+    object-fit: cover;
+    margin:40px;
+}
+
+.contact-item:hover {
+    transform: scale(1.1);
+}
+
+.contact-info {
+    padding: 40px;
+    justify-content: center;
+    align-content:center;
+    margin-left:20px;
+}
+
+.contact-info h2 {
+    color: floralwhite;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+
+
+/*KEYFRAMES*/
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .side-menu {
+        width: 300px;
+        right: -300px;
+    }
+
+    .menu-button {
+        width: 50px;
+        height: 50px;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .decorative-circle {
+        width: 50px;
+        height: 50px;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .HeroFont {
+        position: absolute;
+        letter-spacing: 1.8rem;
+        justify-self: start;
+        top: 0%;
+        left: 8%;
+        font-size: 9rem;
+        font-family: "Bungee Hairline", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        color:  rgb(230, 230, 230 , 0.6);
+    }
+
+    .BGFont {
+        position: absolute;
+        letter-spacing: 1rem;
+        justify-self: start;
+        top: 135%;
+        left: 7%;
+        font-size: 5rem;
+        font-family: "Bungee Hairline", sans-serif;
+        font-weight: 800;
+        font-style: normal;
+        color:  rgb(230, 230, 230 , 0.9);
+    }
+
+    .contact-item {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .contact-image {
+                width: 100%;
+                height: 200px;
+            }
+
+
+            .contact-info {
+                padding: 30px 20px;
+            }
+        }
+}
+}
+</style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo" >Automotive NVH</div>
+            <div class="loading-logo" >Control & Instrumentation</div>
+            <div class="loading-logo" >Programming & Automation</div>
+            <div class="loading-logo" >Theatre Backstage</div>
+            <div class="horizontal-bar">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div> 
+        </div>
+    </div>
+
+    <!-- Screen Border -->
+    <div class="screen-border"></div>
+
+    <!-- Decorative Circle Top Left -->
+    <div class="decorative-circle">
+        <div class="circle-inner">
+            <div class="circle-rotating"></div>
+            <img src="./images/lucid.svg" alt="Lucid Air">
+        </div>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-button" id="menuButton">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Side Menu -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-section">
+            <div class="menu-section-title">NAVIGATION</div>
+            <div class="menu-item">
+                <a href="#home">Home</a>
+            </div>
+            <div class="menu-item">
+                <a href="#page1">Automotive NVH</a>
+            </div>
+            <div class="menu-item">
+                <a href="#page2">Control & Instrumentation</a>
+            </div>
+            <div class="menu-item">
+                <a href="#page3">Programming & Automation</a>
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <div class="menu-section-title">EXTRA</div>
+            <div class="menu-item">
+                <a href="#page4">Theatre Lighting & Sound</a>
+            </div>
+            <div class="menu-item">
+                <a href="#page5" target="page5">ISO Standards</a>
+            </div>
+            <div class="menu-item">
+                <a href="#page6" target="page6">Ultimate Frisbee</a>
+            </div>
+            <div class="menu-item">
+                <a href="#page7" target="page6">Collaborations</a>
+            </div>
+            <div class="menu-item">
+                <a href="#page8" target="page7">Get In Touch</a>
+            </div>
+        </div>
+    </nav>
+
+<!-- Menu  -->
+<section class="hero" id="home">
+    <div class="HeroFont"> Portfolio </div>
+    <h1 class="title"> ZHAO CHUEN LEONG</h1>
+    <p class="description">
+        Hi, I'm Zhao. I am currently working as a Automotive NVH Engineer. My job doesn't  require coding. I still thought it would be neat to have this website for maintaining my coding skills and keeping my projects updated.
+    </p>
+</section>
+
+<div class = "spacer"></div>
+
+<!-- Page1 BG Image -->
+
+<div class = "BGImageContainer">
+    <div class = "BGImage">
+        <img src="./images/noise_control.svg" alt="Ear BG">
+    </div>
+    <div class = "BGImage">
+    <img src="./images/electric_car.svg" alt="Car Gear BG">
+    </div>
+<div class = "BGImage">
+    <img src="./images/speaker.svg" alt="Speaker BG">
+    </div>
+</div>
+
+<!-- Page 1 here -->
+<section class="section">
+    <div class="BGFont" id="page1"> Automotive NVH </div>
+    <div class="image-grid">
+        <div class="grid-item">
+          <div class="text-overlay">Airbourne & Structureborne Noise</div>
+          <img src="./images/cell.jpg" alt="dynos">
+      </div>
+
+      <div class="grid-item">
+          <div class="text-overlay">Modal & Material</div>
+          <img src="./images/impedence tube.jpeg" alt="tube">
+      </div>
+
+
+      <div class="grid-item">
+          <div class="text-overlay">Data Analysis & Simulations</div>
+          <img src="./images/analysis.png" alt="analysis">
+      </div>           
+  </div>            
+</div>
+</section>
+
+<div class = "spacer"></div>
+
+<!-- Page2 BG Image -->
+<div class = "BGImageContainer">
+    <div class = "BGImage">
+        <img src="./images/thermostat.svg" alt="Thermostat BG">
+    </div>
+    <div class = "BGImage">
+        <img src="./images/car_gear.svg" alt="Car gear BG">
+    </div>
+    <div class = "BGImage">
+        <img src="./images/graph.svg" alt="Graph BG">
+    </div>
+</div>
+
+<!-- Page 2 here -->
+<section class="section">
+    <div class="BGFont" id="page2" style="top:240%;"> Control & Instrumentation </div>
+    <div class="image-grid">
+        <div class="grid-item">
+          <div class="text-overlay">Rig & Instrumentation Design</div>
+          <img src="./images/muffler.jpeg" alt="muffler">
+      </div>
+
+      <div class="grid-item">
+          <div class="text-overlay">Calibration</div>
+          <img src="./images/shaker.jpeg" alt="shaker">
+      </div>
+
+      <div class="grid-item">
+          <div class="text-overlay">CAN/Ethernet Control & Monitoring</div>
+          <img src="./images/nice car.jpeg" alt="car">
+      </div>
+
+  </div>
+</section>
+
+<div class = "spacer"></div>
+
+<!-- Page 3 BG Image -->
+<div class = "BGImageContainer">
+    <div class = "BGImage" ">
+        <img src="./images/c.svg" alt="c BG">
+    </div>
+    <div class = "BGImage" ">
+        <img src="./images/car-hacking.svg" alt="car hacking BG">
+    </div>
+    <div class = "BGImage" ">
+        <img src="./images/python.svg" alt="python BG">
+    </div>
+</div>
+<!-- Page 3 here -->
+<section class="section">
+    <div class="BGFont" style=" color:  rgb(0,0,0 , 0.8); top:355%;" id="page3"> Programming & Automation </div>
+    <div class="image-grid">
+        <div class="grid-item">
+          <div class="text-overlay">Simulations</div>
+          <img src="./images/modal.png" alt="modal">
+      </div>
+
+      <div class="grid-item">
+          <div class="text-overlay">Software Development</div>
+          <img src="./images/bms settings.png" alt="bms">
+      </div>
+
+      <div class="grid-item">
+          <div class="text-overlay">Car Control & Measurement Automation</div>
+          <img src="./images/gui.png" alt="gui">
+      </div>
+  </div>
+</section>
+
+
+
+<!-- Extra here -->
+<div class = "title2"> EXTRA </div>
+
+
+
+
+<!-- Page4 BG Image -->
+<div class = "BGImageContainer">
+    <div class = "BGImage">
+        <img src="./images/mixer.svg" alt="mixer BG">
+    </div>
+    <div class = "BGImage">
+        <img src="./images/theatre.svg" alt="Theatre BG">
+    </div>
+    <div class = "BGImage">
+        <img src="./images/light.svg" alt="Light BG">
+    </div>
+</div>
+
+
+<!-- Page 4 here -->
+<section class="section">
+    <div class="BGFont" style="top:500%;" id="page4"> Theatre Backstage </div>
+    <div class="image-grid">
+        <div class="grid-item">
+          <div class="text-overlay">Programming</div>
+          <img src="./images/susu.jpeg" alt="susu">
+      </div>
+
+      <div class="grid-item">
+          <div class="text-overlay">Lighting</div>
+          <img src="./images/lighting.jpeg" alt="lights">
+      </div>
+
+      <div class="grid-item">
+          <div class="text-overlay">Sound</div>
+          <img src="./images/sound.jpeg" alt="sound">
+      </div>
+</section>
+
+<div class = "spacer"></div>
+
+<!-- Page 5 here -->
+<section class="section">
+    <div class="BGFont" style="top:650%;" id="page5"> Engineering Standards </div>
+    <div class="image-grid">
+        <li>EN 15153-4</li>
+        <li>ISO 10816-3</li>
+        <li>EN 13487</li>
+        <li>ISO 20270</li>
+        <li>ISO 3744</li>
+        <li>ISO 3745</li>
+        <li>ISO 3746</li>
+        <li>ECE 51-03</li>
+        <li>IEC 60034-9</li>
+        <li>IEC 60034-14</li>
+        <li>IEC 60076-10</li>
+        <li>ISO 11201</li>
+        <li>ISO 11202</li>
+        <li>ISO 11204</li>
+    </div>
+</section>
+
+<!-- Page6 BG Image -->
+<div class = "BGImageContainer">
+    <div class = "BGImage">
+        <img src="./images/layout.png" alt="layout BG">
+    </div>
+    <div class = "BGImage">
+        <img src="./images/frisbee.svg" alt="Frisbee disc BG">
+    </div>
+    <div class = "BGImage">
+        <img src="./images/catchfrisbee.png" alt="catch frisbee BG">
+    </div>
+</div>
+
+<!-- Page 6 here -->
+<section class="section">
+    <div class="BGFont" style="top:800%;" id="page6"> Ultimate Frisbee </div>
+    <div class="image-grid">
+        <div class="grid-item">
+      </div>
+      <div class="grid-item">
+          <img src="./images/frisbee team.jpeg" alt="team away">
+      </div>
+    </div>
+</section>
+
+<div class = "spacer"></div>
+
+<section class ="section">
+<div class="BGFont" style="top:900%;"" id="page7"> Companies I Have Collaborated With </div>
+    <div class="image-grid2">
+                    <div class="logo-item">
+                        <img src="./images/Fomoative.png" alt="foamotive">
+                    </div>
+                    <div class="logo-item">
+                        <img src="./images/polyphony.png" alt="polyphony">
+                    </div>
+                    <div class="logo-item">
+                        <img src="./images/dsd.jpg" alt="dsd">
+                    </div>
+                    <div class="logo-item">
+                        <img src="./images/bentley.svg" alt="bentley">
+                    </div>
+                    <div class="logo-item">
+                        <img src="./images/randel.png" alt="randel">
+                    </div>
+                    <div class="logo-item">
+                        <img src="./images/singer.png" alt="singer">
+                    </div>
+                    <div class="logo-item">
+                        <img src="./images/mahindra.svg" alt="mahindra">
+                    </div>
+                    <div class="logo-item">
+                        <img src="./images/land-rover.svg" alt="land rover">
+                    </div>
+                    <div class="logo-item">
+                        <img src="./images/jaguar.svg" alt="jaguar">
+                    </div>
+</div>
+</section>
+<!-- Page 7 here -->
+
+<div class="BGFont" style="top:100%;" id="page8"> Get In Touch </div>
+<section class="section" style="-webkit-user-select: text;
+          -moz-user-select: text;
+          -ms-user-select: text;
+          user-select: text;">
+
+
+<div class = "contactContainer">
+    <div class="contact-item">
+        <a>
+        <img src="./images/call.svg" alt="call" class="contact-image">
+            <div class="contact-info">
+                <h2>+44(0)7716292769</h2>
+            </div>
+        </a>
+    </div>
+
+     <div class="contact-item">
+        <a href="mailto:leongzhaochuen@gmail.com">
+        <img src="./images/gmail.svg" alt="gmail">
+            <div class="contact-info">
+                <h2>leongzhaochuen@gmail.com</h2>
+            </div>
+            </a>
+    </div>
+
+    <div class="contact-item">
+        <a href="https://www.linkedin.com/in/zhao-chuen-leong-5422581b2/">
+            <img src="./images/linkedin.svg" alt="linkedin">
+            <div class="contact-info">
+                <h2>Zhao Chuen Leong</h2>
+            </div>
+            </a>
+    </div>
+    
+    <div class="contact-item">
+        <a href="https://leonix8128.github.io/">
+            <img src="./images/old website.png" alt="old website">
+            <div class="contact-info">
+                <h2>Old Website</h2>
+            </div>
+            </a>
+    </div>
+</div>
+        
+<div class = "spacer"></div>
+
+<script>
+
+        //No Scroll
+        // Add class on page load
+document.body.classList.add('no-scroll');
+
+        // Remove class after 5 seconds
+setTimeout(() => {
+  document.body.classList.remove('no-scroll');
+}, 5000);
+
+        // Menu toggle functionality
+const menuButton = document.getElementById('menuButton');
+const sideMenu = document.getElementById('sideMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+
+function toggleMenu() {
+    menuButton.classList.toggle('active');
+    sideMenu.classList.toggle('open');
+    menuOverlay.classList.toggle('active');
+}
+
+menuButton.addEventListener('click', toggleMenu);
+menuOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a menu item
+document.querySelectorAll('.menu-item a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        toggleMenu();
+    });
+});
+
+        // Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+
+
+
+        //ANIME JS STUFF
+
+var animate = anime.animate;
+var stagger = anime.stagger;
+var randomV = anime.utils.random;
+var createTimeline = anime.createTimeline;
+var Spring = anime.spring;
+var splitText = anime.splitText;
+var createTimer = anime.createTimer;
+var onScroll = anime.onScroll;
+var waapi = anime.waapi;
+
+        //Loading Screen Animation
+const randomWave = animate('.square', {
+  scale: (['1', '0.5', '1']),
+  delay: stagger(50 , { from: 'random' }),
+  ease: 'inOutExpo',
+  duration: 500,
+  loopDelay:-100,
+  loop: true
+});
+
+const tl = createTimeline({loopDelay: 200,loop: true,})
+.sync(randomWave)
+.add('.square', {
+  height: (['20px', '200', '20px']),
+  delay: stagger(50 , { from: 'center' , reversed: true }),
+  ease: 'outExpo', 
+  duration: 1000, 
+  loop: true,
+},0);
+
+        //Main Page
+var { chars } = splitText('.HeroFont', {
+  chars: { wrap: 'clip' },
+})
+
+const HeroAnimation = animate(chars, {
+  x: [
+    { to: ['200%', '0%'] },
+    { ease: 'in(3)' }
+    ],
+  duration: 750,
+  ease: 'out(3)',
+  delay: stagger(100),
+  autoplay: false,
+  onComplete: self => self.cancel()
+});
+
+        //Titles
+document.querySelectorAll('.BGFont').forEach((element) => {
+animate(element, {
+    x: {
+                from: '-200vw', // starts from off-screen left
+                to: '0%'      // ends at right side
+    },
+    duration: 2000,
+    ease: 'out(4)',
+    delay: stagger(100),
+    autoplay: onScroll({
+      enter: 'center+=1em top-=100%',
+  }),
+    onComplete: self => self.cancel()
+});
+});
+
+
+        //BG Images
+document.querySelectorAll('.BGImage').forEach((element) => {
+  waapi.animate(element, {
+    opacity: [0,1,1,1,0.3,0.3,0.3,0.3,0.5,1,1,1,1,1,1,1,1,1,1,1,0], 
+    y: '95rem',
+    rotate: '370deg',
+    ease: 'linear',
+    autoplay: onScroll({
+        enter: 'bottom-=250 bottom',
+        leave: 'top-=700 bottom',
+        sync: .7,
+    }),
+});
+});
+
+        //List animation
+const listStagger = animate('li',{
+    scale: {to: [0,1]},
+    delay: stagger(150, { from: 'random' }),
+    ease: 'outElastic(1.05,0.58)',
+    duration:1000,
+    autoplay: onScroll({
+      enter: 'bottom+=1em top-=100%',
+  }),
+});
+
+        //Timer 
+createTimer({
+  duration: 5000,
+  onComplete: self => randomWave.cancel(),
+  onComplete: self => HeroAnimation.play(),
+});
+
+
+</script>
+</body>
+</html>
+
+
